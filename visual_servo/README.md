@@ -3,8 +3,8 @@
 Includes a proof-of-concept image-based visual servoing technique for use in a contact inspection application.
 
 ## 1 Pre-requisites
-  Ubuntu 64-bit 16.04 or 18.04
-  ViSP Packages:
+1. Ubuntu 64-bit 16.04 or 18.04
+2. ViSP Packages
     sudo apt-get install libvisp-dev
 
 ## 2 Build 
