@@ -14,7 +14,7 @@ std::vector<std::vector<float>> parse()
     // parse the feature points
     while (std::getline(file, str))
     {
-        for (unsigned int j = 0; j < 4; ++j)
+        for (unsigned int j = 0; j < NUM_FEATURE_POINTS; ++j)
         {
             std::getline(file, str); // iter line
             std::vector<float> result;
@@ -70,7 +70,7 @@ void init_task(vpServo &task, std::vector<vpFeaturePoint> &p, std::vector<vpFeat
     task.setLambda(0.5); // gain
 
     // set current and desired points
-    for (unsigned int i = 0; i < 4; ++i)
+    for (unsigned int i = 0; i < NUM_FEATURE_POINTS; ++i)
     {
         float x_start = start_points[i][0];
         float y_start = start_points[i][1];
@@ -83,7 +83,7 @@ void init_task(vpServo &task, std::vector<vpFeaturePoint> &p, std::vector<vpFeat
         pd[i].set_xyZ(x_end, y_end, Z_end);
     }
 
-    for (unsigned int i = 0; i < 4; i++)
+    for (unsigned int i = 0; i < NUM_FEATURE_POINTS; i++)
     {
         task.addFeature(p[i], pd[i]); // add curent and desired feature to visual servo task
     }
@@ -112,12 +112,12 @@ void visual_servo_loop(const std::vector<std::vector<float>> &results, vpServo &
     {
         std::cout << "iter: " << iter << std::endl;\
 
-        for (unsigned int i = 0; i < 4; ++i)
+        for (unsigned int i = 0; i < NUM_FEATURE_POINTS; ++i)
         {
 			// update current visual features
-            float x = results[iter*4 + i][1];
-            float y = results[iter*4 + i][2];
-            float Z = results[iter*4 + i][0];
+            float x = results[iter*NUM_FEATURE_POINTS + i][1];
+            float y = results[iter*NUM_FEATURE_POINTS + i][2];
+            float Z = results[iter*NUM_FEATURE_POINTS + i][0];
             p[i].set_xyZ(x, y, Z);
         }
         vpColVector v = task.computeControlLaw();
@@ -142,8 +142,8 @@ int main()
     vpServo task;
 
     // define four visual features as 2D points in image-plane
-    std::vector<vpFeaturePoint> p(4); // current point feature
-    std::vector<vpFeaturePoint> pd(4); // desired point feature
+    std::vector<vpFeaturePoint> p(NUM_FEATURE_POINTS); // current point feature
+    std::vector<vpFeaturePoint> pd(NUM_FEATURE_POINTS); // desired point feature
 
     // get the start and end points for the task
     std::vector<std::vector<float>> start_points;

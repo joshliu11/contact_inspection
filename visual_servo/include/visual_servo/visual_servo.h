@@ -10,6 +10,7 @@
 
 // constants
 unsigned int NUM_ITERS = 150;
+unsigned int NUM_FEATURE_POINTS = 4;
 
 // function definitions
 std::vector<std::vector<float>> parse();
