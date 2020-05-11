@@ -7,7 +7,7 @@
 std::vector<std::vector<float>> parse()
 {
     // read in the data file
-    std::ifstream file("data_stripped.txt");
+    std::ifstream file("datafiles/data_stripped.txt");
     std::string str; 
     std::vector<std::vector<float>> results;
 
