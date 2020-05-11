@@ -31,6 +31,8 @@ endif()
 
 find_package(VISP REQUIRED visp_core visp_robot visp_vs visp_blob visp_vision visp_io visp_gui visp_ar)
 
+include_directories(include)
+
 # set the list of source files
 set(tutorial_cpp
   src/tutorial-ibvs-4pts.cpp

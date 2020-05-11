@@ -1,15 +1,4 @@
-// #include <visual_servo/visual_servo.h>
-
-#include <visp3/robot/vpSimulatorCamera.h>
-#include <visp3/visual_features/vpFeatureBuilder.h>
-#include <visp3/vs/vpServo.h>
-
-#include <fstream>
-#include <string>
-#include <iostream>
-#include <sstream>
-#include <vector>
-#include <stdlib.h>
+#include <visual_servo/visual_servo.h>
 
 /*
     Parse the stripped data file that contains the feature point info
@@ -116,10 +105,10 @@ void init_task(vpServo &task, std::vector<vpFeaturePoint> &p, std::vector<vpFeat
     Currently gets the feature points from the results vector
     Eventually will need to get from tracker at each timestamp
 */
-void visual_servo_loop(const std::vector<std::vector<float>> &results, vpServo &task, std::vector<vpFeaturePoint> &p, const unsigned int num_iters)
+void visual_servo_loop(const std::vector<std::vector<float>> &results, vpServo &task, std::vector<vpFeaturePoint> &p)
 {
     // visual servo loop
-    for (unsigned int iter = 0; iter < num_iters; iter++)
+    for (unsigned int iter = 0; iter < NUM_ITERS; iter++)
     {
         std::cout << "iter: " << iter << std::endl;\
 
@@ -165,8 +154,7 @@ int main()
     init_task(task, p, pd, start_points, end_points);
 
     // visual servo loop
-    unsigned int num_iters = 150;
-    visual_servo_loop(results, task, p, num_iters);
+    visual_servo_loop(results, task, p);
 
     return 0;
 }
