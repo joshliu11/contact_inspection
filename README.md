@@ -1,13 +1,10 @@
 # contact_inspection
 
-## 1 Pre-requisites
+This repository contains two directories which I used to implement a proof-of-concept image-based visual servoing technique for use in a contact inspection application.
+1. [ViSP IBVS Tutorials](https://github.com/joshliu11/contact_inspection/tree/master/ibvs)
+2. [Image-Based Visual Servo](https://github.com/joshliu11/contact_inspection/tree/master/visual_servo)
+
+## Pre-requisites
   Ubuntu 64-bit 16.04 or 18.04
-  ViSP Packages: sudo apt-get install libvisp-dev
-  
-## 2 Build 
-    git clone https://github.com/joshliu11/contact_inspection.git
-    cd ibvs
-    cmake -DCMAKE_BUILD_TYPE=Release
-    make tutorial-ibvs-4pts
-## 3 Run 
-    ./tutorial-ibvs-4pts 
+  ViSP Packages
+    sudo apt-get install libvisp-dev
