@@ -3,6 +3,10 @@
 #include <visp3/visual_features/vpFeatureBuilder.h>
 #include <visp3/vs/vpServo.h>
 
+/*
+	Added comments and prints to visp3 tutorial
+	Use this to generate data.txt
+*/
 int main()
 {
 	try
@@ -37,6 +41,18 @@ int main()
 			task.addFeature(p[i], pd[i]); // add curent and desired feature to visual servo task
 		}
 
+		// // print the current and desired features points
+		// std::cout << "current features points" << std::endl;
+		// p[0].print();
+		// p[1].print();
+		// p[2].print();
+		// p[3].print();
+		// std::cout << "desired feature points" << std::endl;
+		// pd[0].print();
+		// pd[1].print();
+		// pd[2].print();
+		// pd[3].print();
+
 		// homogenous transform to define position of camera (initialize as identity)
 		vpHomogeneousMatrix wMc;
 		// homogenous transform to define position of object in world frame (initialize as identity)
@@ -52,6 +68,8 @@ int main()
 		// visual servo loop
 		for (unsigned int iter = 0; iter < 150; iter++)
 		{
+			std::cout << "iter: " << iter << std::endl;
+
 			robot.getPosition(wMc); // get position of camera frame wrt world frame
 			cMo = wMc.inverse() * wMo; // compute position of object in new camera frame
 			// update current visual features by projecting 3D points in the image-plane associated to the new camera location
@@ -64,6 +82,15 @@ int main()
 			vpColVector v = task.computeControlLaw();
 			// apply 6-dim velocity vector to camera
 			robot.setVelocity(vpRobot::CAMERA_FRAME, v);
+			
+			// print the updated feature points
+			p[0].print();
+			p[1].print();
+			p[2].print();
+			p[3].print();
+
+			// // print the desired velocity vector
+			// printf("v: %f %f %f %f %f %f\n", v[0], v[1], v[2], v[3], v[4], v[5]);
 		}
 
 		task.kill();

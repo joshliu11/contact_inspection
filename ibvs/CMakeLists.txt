@@ -43,7 +43,6 @@ set(tutorial_cpp
   tutorial-ibvs-4pts-wireframe-camera.cpp
   tutorial-ibvs-4pts-wireframe-robot-afma6.cpp
   tutorial-ibvs-4pts-wireframe-robot-viper.cpp
-  visual_servo.cpp
 )
 
 if(NOT DEFINED WINRT_8_1)
