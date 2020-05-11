@@ -4,8 +4,7 @@ Includes a proof-of-concept image-based visual servoing technique for use in a c
 
 ## 1 Pre-requisites
 1. Ubuntu 64-bit 16.04 or 18.04
-2. ViSP Packages
-    sudo apt-get install libvisp-dev
+2. ViSP Packages `sudo apt-get install libvisp-dev`
 
 ## 2 Build 
     git clone https://github.com/joshliu11/contact_inspection.git
