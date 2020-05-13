@@ -37,6 +37,8 @@ include_directories(include)
 set(tutorial_cpp
   src/tutorial-ibvs-4pts.cpp
   src/visual_servo.cpp
+  src/parsing.cpp
+  src/validation.cpp
 )
 
 foreach(cpp ${tutorial_cpp})

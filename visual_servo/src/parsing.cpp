@@ -17,9 +17,11 @@ int main()
     // parsing loop
     while (std::getline(file, str))
     {
+        // the first getline ignores the iter line
+        // now parse the next 4 lines to get the 4 feature points
         for (unsigned int j = 0; j < 4; ++j)
         {
-            std::getline(file, str); // iter
+            std::getline(file, str);
             std::vector<float> result;
             std::stringstream s_stream(str);
             while(s_stream.good()) {

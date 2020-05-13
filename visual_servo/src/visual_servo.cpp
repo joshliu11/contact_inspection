@@ -14,9 +14,11 @@ std::vector<std::vector<float>> parse()
     // parse the feature points
     while (std::getline(file, str))
     {
+        // the first getline ignores the iter line
+        // now parse the next 4 lines to get the 4 feature points
         for (unsigned int j = 0; j < NUM_FEATURE_POINTS; ++j)
         {
-            std::getline(file, str); // iter line
+            std::getline(file, str);
             std::vector<float> result;
             std::stringstream s_stream(str);
             while(s_stream.good()) {
@@ -132,6 +134,7 @@ void visual_servo_loop(const std::vector<std::vector<float>> &results, vpServo &
 
 /*
     Uses parsed data points to perform visual servo task
+    Used to create visual_servo_output.txt by redirecting output to the txt file
 */
 int main()
 {
